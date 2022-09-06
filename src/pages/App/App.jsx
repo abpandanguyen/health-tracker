@@ -20,11 +20,11 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
-            <Route path='/logs/new' element={<NewLogPage />} />
-            <Route path='/logs' element={<LogHistoryPage />} />
-            <Route path='/prescriptions' element={<PrescriptionHistoryPage />} />
-            <Route path='/prescriptions/new' element={<NewPrescriptionPage />} />
-            <Route path='/user' element={<UserPage />} />
+            <Route path='/logs/new' element={<NewLogPage user={user} />} />
+            <Route path='/logs' element={<LogHistoryPage user={user} />} />
+            <Route path='/prescriptions' element={<PrescriptionHistoryPage user={user} />} />
+            <Route path='/prescriptions/new' element={<NewPrescriptionPage user={user} />} />
+            <Route path='/user' element={<UserPage />} user={user} />
             <Route path='/*' element={<Navigate to='/user' />} />
           </Routes>
         </>
