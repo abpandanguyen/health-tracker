@@ -22,8 +22,8 @@ app.use(express.static(path.join(__dirname, 'build')));
 const port = process.env.PORT ||  3001;
 
 // Put API routes here, before the "catch all" route
+app.use('/api/users', require('./routes/api/users'));
 const ensureLoggedIn = require('./config/ensureLoggedIn');
-app.use('/api/users', ensureLoggedIn, require('./routes/api/users'));
 app.use('/api/logs', ensureLoggedIn, require('./routes/api/logs'));
 
 
