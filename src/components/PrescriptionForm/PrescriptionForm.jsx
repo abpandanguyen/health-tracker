@@ -2,19 +2,19 @@ import { useState } from 'react';
 
 export default function PrescriptionForm({ user, setUser, handleAddPrescription }) {
   const [data, setData] = useState({
-    name: '',
+    rxName: '',
     class: '',
     dose: '',
   });
 
-  function onChange(evt) {
+  function handleChange(evt) {
     setData({ ...data, [evt.target.name]: evt.target.value });
   }
-  function onSubmit(evt) {
+  function handleSubmit(evt) {
     evt.preventDefault();
     handleAddPrescription(data);
     setData({
-      name: '',
+      rxName: '',
       class: '',
       dose: '',
     });
@@ -22,24 +22,24 @@ export default function PrescriptionForm({ user, setUser, handleAddPrescription 
   return (
     <div>
     <h1>New Prescription</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Name</label>
         <input 
-          onChange={onChange} 
+          onChange={handleChange} 
           type="string"
-          name="name" 
-          value={data.name} 
+          name="rxName" 
+          value={data.rxName} 
         />
         <label>Class</label>
         <input
-          onChange={onChange}
+          onChange={handleChange}
           type="string"
           name="class"
           value={data.class}
         />
         <label>Dose</label>
         <input
-          onChange={onChange}
+          onChange={handleChange}
           type="string"
           name="dose"
           value={data.dose}

@@ -5,7 +5,7 @@ import LogList from '../../components/LogList/LogList';
 import * as logsAPI from '../../utilities/logs-api';
 
 
-export default function LogHistoryPage() {
+export default function LogHistoryPage({ prescriptions }) {
   const [logs, setLogs] = useState();
   useEffect(function() {
     async function getLogs() {
@@ -24,7 +24,7 @@ export default function LogHistoryPage() {
   return (
     <main>
       <h1>Log Page</h1>
-      <LogForm handleAddLog={handleAddLog} />
+      <LogForm handleAddLog={handleAddLog} prescriptions={prescriptions} />
       <LogList
         logs={logs}
       />
