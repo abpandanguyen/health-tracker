@@ -15,6 +15,7 @@ export default function LogHistoryPage() {
   }, []);
 
   async function handleAddLog(logData) {
+    console.log(logData);
     const log = await logsAPI.postLog(logData);
     setLogs([...logs, log]);
   }

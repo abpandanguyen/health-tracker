@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function LogForm({ user, setUser, handleAddLog }) {
   const [data, setData] = useState({
     vitals: '',
-    prescription: '',
     date: '',
     notes: '',
   });
@@ -16,7 +15,6 @@ export default function LogForm({ user, setUser, handleAddLog }) {
     handleAddLog(data);
     setData({
       vitals: '',
-      prescription: '',
       date: '',
       notes: '',
     });
@@ -32,13 +30,13 @@ export default function LogForm({ user, setUser, handleAddLog }) {
           name="vitals" 
           value={data.vitals} 
         />
-        <label>Prescription</label>
+        {/* <label>Prescription</label>
         <input
           onChange={onChange}
           type="string"
           name="prescription"
           value={data.prescription}
-        />
+        /> */}
         <label>Date</label>
         <input
           onChange={onChange}
