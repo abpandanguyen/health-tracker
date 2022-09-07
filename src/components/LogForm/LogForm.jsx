@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import * as logsAPI from '../../utilities/logs-api';
 
 export default function LogForm({ user, setUser, handleAddLog }) {
   const [data, setData] = useState({

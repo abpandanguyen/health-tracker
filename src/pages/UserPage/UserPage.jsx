@@ -5,16 +5,10 @@ export default function UserPage(){
     return (
         <div class="cardContainer">
             <Link to='/logs'>
-                <div>Log History</div>
-            </Link>
-            <Link to='/logs/new'>
-                <div>New Log</div>
+                <div>Logs</div>
             </Link>
             <Link to='/prescriptions'>
-                <div>Prescription History</div>
-            </Link>
-            <Link to='/prescriptions/new'>
-                <div>New Prescription</div>
+                <div>Prescriptions</div>
             </Link>
         </div>
     )
