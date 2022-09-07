@@ -6,6 +6,5 @@ export function postLog(logData) {
     return sendRequest(BASE_URL, 'POST', logData);
 }
 export function getAllForUser() {
-    console.log('hells');
     return sendRequest(BASE_URL);
 }
