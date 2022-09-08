@@ -1,19 +1,15 @@
 import { useState } from 'react';
 import Select from 'react-select';
+import './LogForm.css';
 
 export default function LogForm({ handleAddLog, prescriptions }) {
   const [selectedPrescriptions, setSelectedPrescriptions] = useState([]);
   const [data, setData] = useState({
     vitals: '',
     date: '',
+    meridiem: '',
     notes: '',
   });
-
-  // const options = prescriptions.map(function(p, idx) {
-  //   return (
-  //     <option key={idx} value={p._id}>{p.rxName}</option>
-  //   );
-  // })
 
   const options = prescriptions.map(p =>   
     ({ value: p._id , label: p.rxName })
@@ -39,13 +35,13 @@ export default function LogForm({ handleAddLog, prescriptions }) {
     <h1>New Log</h1>
       <form onSubmit={handleSubmit}>
         <label>Vitals</label>
-        <input 
+        <input
           onChange={handleChange} 
           name="vitals" 
           value={data.vitals} 
           placeholder="Weight, blood pressure, blood sugar, etc."
         />
-        <label>Date and Time</label>
+        <label>Date</label>
         <input
           onChange={handleChange}
           type="date"
@@ -53,6 +49,12 @@ export default function LogForm({ handleAddLog, prescriptions }) {
           required
           value={data.date}
         />
+        <label>AM/PM</label>
+        <select name="meridiem" required onChange={handleChange}>
+          <option value="N/A">N/A</option>
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
         <label>Notes</label>
         <input
           onChange={handleChange}

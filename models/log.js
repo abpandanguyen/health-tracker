@@ -7,6 +7,10 @@ const logSchema = new Schema({
     vitals: { type: String, default: 'N/A' },
     notes: { type: String, default: 'N/A' },
     date: { type: Date, default: 'N/A'},
+    meridiem: { 
+        type: String,
+        enum: ['N/A', 'AM', 'PM']
+    },
     prescriptions: [{ type: Schema.Types.ObjectId, ref: 'Prescription'}]
 }, {
     timestamps: true,

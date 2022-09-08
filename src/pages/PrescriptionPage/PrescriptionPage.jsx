@@ -18,12 +18,20 @@ export default function PrescriptionHistoryPage() {
     const prescription = await prescriptionsAPI.postPrescription(prescriptionData);
     setPrescriptions([...prescriptions, prescription]);
   }
+
+  async function handleDelete(prescriptionEntry) {
+    const prescription = await prescriptionsAPI.deletePrescription(prescriptionEntry);
+    const updatedPrescriptions = prescriptions.filter((p) => p._id !== prescription._id)
+    setPrescriptions(updatedPrescriptions);
+  }
+
     return (
       <main>
         <h1>Prescription Page</h1>
         <PrescriptionForm handleAddPrescription={handleAddPrescription} />
         <PrescriptionList
           prescriptions={prescriptions}
+          handleDelete={handleDelete}
         />
     </main>
     );

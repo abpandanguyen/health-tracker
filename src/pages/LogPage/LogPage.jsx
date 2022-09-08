@@ -16,9 +16,14 @@ export default function LogHistoryPage({ prescriptions }) {
   }, []);
 
   async function handleAddLog(logData) {
-    console.log(logData);
     const log = await logsAPI.postLog(logData);
     setLogs([...logs, log]);
+  }
+
+  async function handleDelete(logEntry) {
+    const log = await logsAPI.deleteLog(logEntry);
+    const updatedLogs = logs.filter((l) => l._id !== log._id)
+    setLogs(updatedLogs);
   }
 
   return (
@@ -27,6 +32,7 @@ export default function LogHistoryPage({ prescriptions }) {
       <LogForm handleAddLog={handleAddLog} prescriptions={prescriptions} />
       <LogList
         logs={logs}
+        handleDelete={handleDelete}
       />
     </main>
     

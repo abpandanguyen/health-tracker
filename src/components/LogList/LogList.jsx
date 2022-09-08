@@ -1,11 +1,12 @@
 import LogListItem from '../LogListItem/LogListItem';
 
-export default function LogList({ logs }) {
+export default function LogList({ logs, handleDelete }) {
     if (!logs) return null;
     const logListItems = logs.map(l =>
         <LogListItem
             log={l}
             key={l._id}
+            handleDelete={handleDelete}
         />
     )
     return (

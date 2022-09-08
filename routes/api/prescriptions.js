@@ -6,4 +6,6 @@ router.get('/', prescriptionsCtrl.getAll);
 
 router.post('/', prescriptionsCtrl.create);
 
+router.delete('/:id', prescriptionsCtrl.deletePrescription);
+
 module.exports = router;

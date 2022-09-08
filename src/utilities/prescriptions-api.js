@@ -8,3 +8,7 @@ export function postPrescription(prescriptionData) {
 export function getAllForUser() {
     return sendRequest(BASE_URL);
 }
+
+export function deletePrescription(id) {
+    return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
+}
