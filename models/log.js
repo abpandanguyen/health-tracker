@@ -7,7 +7,7 @@ const logSchema = new Schema({
     vitals: { type: String, default: 'N/A' },
     notes: { type: String, default: 'N/A' },
     date: { type: Date, default: 'N/A'},
-    prescriptions: { type: Schema.Types.ObjectId, ref: 'Prescription'}
+    prescriptions: [{ type: Schema.Types.ObjectId, ref: 'Prescription'}]
 }, {
     timestamps: true,
 });

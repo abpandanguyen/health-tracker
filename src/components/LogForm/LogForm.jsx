@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function LogForm({ user, setUser, handleAddLog, prescriptions }) {
+export default function LogForm({ handleAddLog, prescriptions }) {
   const [selectedPrescriptions, setSelectedPrescriptions] = useState([]);
   const [data, setData] = useState({
     vitals: '',
@@ -10,7 +10,7 @@ export default function LogForm({ user, setUser, handleAddLog, prescriptions }) 
 
   const options = prescriptions.map(function(p, idx) {
     return (
-      <option key={idx} value={idx}>{p.rxName}</option>
+      <option key={idx} value={p._id}>{p.rxName}</option>
     );
   })
 
@@ -21,7 +21,7 @@ export default function LogForm({ user, setUser, handleAddLog, prescriptions }) 
 
   function handleChange(evt) {
     if (evt.target.name === 'prescriptions') {
-    selectedPrescriptions.push(parseInt(evt.target.value));
+    selectedPrescriptions.push(prescriptions[parseInt(evt.target.value)]);
     }
     setSelectedPrescriptions(selectedPrescriptions)
 
@@ -39,19 +39,14 @@ export default function LogForm({ user, setUser, handleAddLog, prescriptions }) 
           onChange={handleChange} 
           name="vitals" 
           value={data.vitals} 
+          placeholder="Weight, blood pressure, blood sugar, etc."
         />
-        {/* <label>Prescription</label>
-        <input
-          onChange={onChange}
-          type="string"
-          name="prescription"
-          value={data.prescription}
-        /> */}
-        <label>Date</label>
+        <label>Date and Time</label>
         <input
           onChange={handleChange}
-          type="datetime-local"
+          type="date"
           name="date"
+          required
           value={data.date}
         />
         <label>Notes</label>
