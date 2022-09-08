@@ -6,7 +6,7 @@ export default function LogListItem({ log }) {
             <div>Date: {new Date(log.date).toLocaleDateString()}</div>            
             <div>Vitals: {log.vitals}</div>
             <div>Notes: {log.notes}</div>
-            <div>Prescription: {log.prescriptions} </div>
+            <div>Prescription: {log.prescriptions.map(p => p.rxName)} </div>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Select from 'react-select';
 
 export default function LogForm({ handleAddLog, prescriptions }) {
   const [selectedPrescriptions, setSelectedPrescriptions] = useState([]);
@@ -8,23 +9,26 @@ export default function LogForm({ handleAddLog, prescriptions }) {
     notes: '',
   });
 
-  const options = prescriptions.map(function(p, idx) {
-    return (
-      <option key={idx} value={p._id}>{p.rxName}</option>
-    );
-  })
+  // const options = prescriptions.map(function(p, idx) {
+  //   return (
+  //     <option key={idx} value={p._id}>{p.rxName}</option>
+  //   );
+  // })
+
+  const options = prescriptions.map(p =>   
+    ({ value: p._id , label: p.rxName })
+  )
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    const pre = selectedPrescriptions.map(p => p.value)
+    console.log(pre);
+    console.log(data);
+    data.prescriptions = pre
     handleAddLog(data);
   }
 
   function handleChange(evt) {
-    if (evt.target.name === 'prescriptions') {
-    selectedPrescriptions.push(prescriptions[parseInt(evt.target.value)]);
-    }
-    setSelectedPrescriptions(selectedPrescriptions)
-
     const newLogData = { ...data, [evt.target.name]: evt.target.value };
     newLogData.prescriptions = selectedPrescriptions;
     setData(newLogData);
@@ -57,9 +61,13 @@ export default function LogForm({ handleAddLog, prescriptions }) {
           value={data.notes}
         />
         <label>Prescriptions</label>
-        <select multiple={true} name="prescriptions" value={data.prescriptions} onChange={handleChange}>
-          {options}
-        </select>
+        <Select 
+          isMulti
+          name="prescriptions" 
+          defaultValue={selectedPrescriptions} 
+          onChange={setSelectedPrescriptions} 
+          options={options} 
+        />
         <button type="submit">ADD LOG</button>
       </form>
     </div>

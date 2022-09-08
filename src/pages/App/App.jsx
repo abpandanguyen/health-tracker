@@ -20,7 +20,7 @@ export default function App() {
       setPrescriptions(prescriptions);
     }
     getPrescriptions();
-  }, []);
+  }, [prescriptions]);
 
   async function handleAddPrescription(prescriptionFormData) {
     const prescription = await prescriptionsAPI.postPrescription(prescriptionFormData)
