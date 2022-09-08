@@ -1,5 +1,5 @@
 import PrescriptionListItem from '../PrescriptionListItem/PrescriptionListItem';
-
+import "./PrescriptionList.css";
 export default function PrescriptionList({ prescriptions, handleDelete }) {
     if (!prescriptions) return null;
     const prescriptionListItems = prescriptions.map(p =>
@@ -11,7 +11,7 @@ export default function PrescriptionList({ prescriptions, handleDelete }) {
     )
     return (
         <main>
-            <h1>Prescription History</h1>
+            <h1 className="list-title">Prescription History</h1>
             {prescriptionListItems}
         </main>
     );

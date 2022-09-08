@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import PrescriptionForm from '../../components/PrescriptionForm/PrescriptionForm';
 import PrescriptionList from '../../components/PrescriptionList/PrescriptionList';
 import * as prescriptionsAPI from '../../utilities/prescriptions-api';
+import './PrescriptionPage.css'
 
 export default function PrescriptionHistoryPage() {
   const [prescriptions, setPrescriptions] = useState([]);
@@ -27,7 +27,7 @@ export default function PrescriptionHistoryPage() {
 
     return (
       <main>
-        <h1>Prescription Page</h1>
+        <h1 className="title">Prescription Page</h1>
         <PrescriptionForm handleAddPrescription={handleAddPrescription} />
         <PrescriptionList
           prescriptions={prescriptions}

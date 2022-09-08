@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import './PrescriptionForm.css';
 export default function PrescriptionForm({ user, setUser, handleAddPrescription }) {
   const [data, setData] = useState({
     rxName: '',
@@ -21,31 +21,36 @@ export default function PrescriptionForm({ user, setUser, handleAddPrescription 
   }
   return (
     <div>
-    <h1>New Prescription</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input 
-          onChange={handleChange} 
-          type="string"
-          name="rxName" 
-          value={data.rxName} 
-        />
-        <label>Class</label>
-        <input
-          onChange={handleChange}
-          type="string"
-          name="class"
-          value={data.class}
-        />
-        <label>Dose</label>
-        <input
-          onChange={handleChange}
-          type="string"
-          name="dose"
-          value={data.dose}
-        />
-        <button type="submit">ADD PRESCRIPTION</button>
-      </form>
+    <h1 className="form-title">New Prescription</h1>
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <label>Name</label>
+          <input 
+            onChange={handleChange} 
+            type="string"
+            name="rxName" 
+            value={data.rxName}
+            placeholder="insulin, lisinopril(prinvil), atorvastatin(lipitor), etc" 
+          />
+          <label>Class</label>
+          <input
+            onChange={handleChange}
+            type="string"
+            name="class"
+            value={data.class}
+            placeholder="diuretics, beta-blockers, cannabinoids, etc."
+          />
+          <label>Dose</label>
+          <input
+            onChange={handleChange}
+            type="string"
+            name="dose"
+            value={data.dose}
+            placeholder="mg, mL, tablets, etc."
+          />
+          <button type="submit">ADD PRESCRIPTION</button>
+        </form>
+      </div>
     </div>
   );
 }

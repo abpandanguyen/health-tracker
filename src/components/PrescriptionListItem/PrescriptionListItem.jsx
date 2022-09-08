@@ -1,8 +1,8 @@
-
+import './PrescriptionListItem.css';
 
 export default function LogListItem({ prescription, handleDelete }) {
     return (
-        <div>
+        <div className="PrescriptionListItem">
             <div>Name: {prescription.rxName}</div>            
             <div>Class: {prescription.class}</div>
             <div>Dose: {prescription.dose}</div>

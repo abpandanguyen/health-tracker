@@ -1,4 +1,5 @@
 import LogListItem from '../LogListItem/LogListItem';
+import "./LogList.css";
 
 export default function LogList({ logs, handleDelete }) {
     if (!logs) return null;
@@ -11,7 +12,7 @@ export default function LogList({ logs, handleDelete }) {
     )
     return (
         <main>
-            <h1>Log History</h1>
+            <h1 className='list-title'>Log History</h1>
             {logListItems}
         </main>
     );
