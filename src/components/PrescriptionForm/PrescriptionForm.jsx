@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './PrescriptionForm.css';
+
 export default function PrescriptionForm({ user, setUser, handleAddPrescription }) {
   const [data, setData] = useState({
     rxName: '',

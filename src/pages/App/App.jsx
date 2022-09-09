@@ -7,7 +7,6 @@ import PrescriptionPage from '../PrescriptionPage/PrescriptionPage';
 import UserPage from '../UserPage/UserPage';
 import NavBar from '../../components/NavBar/NavBar';
 import './App.css';
-import * as logsAPI from '../../utilities/logs-api';
 import * as prescriptionsAPI from '../../utilities/prescriptions-api';
 
 export default function App() {
@@ -20,12 +19,8 @@ export default function App() {
       setPrescriptions(prescriptions);
     }
     getPrescriptions();
-  }, [prescriptions]);
+  }, []);
 
-  async function handleAddPrescription(prescriptionFormData) {
-    const prescription = await prescriptionsAPI.postPrescription(prescriptionFormData)
-    setPrescriptions([...prescriptions, prescription]);
-  }
 
   return (
     <main className="App">
@@ -34,8 +29,8 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
-            <Route path='/logs' element={<LogPage user={user} prescriptions={prescriptions} />} />
-            <Route path='/prescriptions' element={<PrescriptionPage user={user} />} />
+            <Route path='/logs' element={<LogPage prescriptions={prescriptions} />} />
+            <Route path='/prescriptions' element={<PrescriptionPage prescriptions={prescriptions} setPrescriptions={setPrescriptions} />} />
             <Route path='/user' element={<UserPage />} user={user} />
             <Route path='/*' element={<Navigate to='/user' />} />
           </Routes>

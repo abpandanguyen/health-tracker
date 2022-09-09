@@ -4,6 +4,7 @@ module.exports = {
     create,
     getAll,
     deleteLog,
+    updateLog,
 };
 
 async function getAll(req, res) {
@@ -15,7 +16,18 @@ async function getAll(req, res) {
 async function create(req, res) {
     req.body.user = req.user._id;
     const log = await Log.create(req.body);
-    res.json(log);
+    const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
+    res.json(logs);
+}
+
+async function updateLog(req, res) {
+    await Log.findOneAndUpdate(
+        {"log._id": req.params._id},
+        req.body,
+        {new: true},
+    )
+    const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
+    res.json(logs)
 }
 
 async function deleteLog(req, res, next) {

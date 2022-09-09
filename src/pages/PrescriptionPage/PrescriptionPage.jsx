@@ -4,19 +4,11 @@ import PrescriptionList from '../../components/PrescriptionList/PrescriptionList
 import * as prescriptionsAPI from '../../utilities/prescriptions-api';
 import './PrescriptionPage.css'
 
-export default function PrescriptionHistoryPage() {
-  const [prescriptions, setPrescriptions] = useState([]);
-  useEffect(function() {
-    async function getPrescriptions() {
-      const prescriptions = await prescriptionsAPI.getAllForUser();
-      setPrescriptions(prescriptions);
-    }
-    getPrescriptions();
-  }, []);
+export default function PrescriptionHistoryPage({ prescriptions, setPrescriptions }) {
 
   async function handleAddPrescription(prescriptionData) {
-    const prescription = await prescriptionsAPI.postPrescription(prescriptionData);
-    setPrescriptions([...prescriptions, prescription]);
+    const prescriptions = await prescriptionsAPI.postPrescription(prescriptionData);
+    setPrescriptions(prescriptions);
   }
 
   async function handleDelete(prescriptionEntry) {

@@ -1,5 +1,6 @@
 import PrescriptionListItem from '../PrescriptionListItem/PrescriptionListItem';
 import "./PrescriptionList.css";
+
 export default function PrescriptionList({ prescriptions, handleDelete }) {
     if (!prescriptions) return null;
     const prescriptionListItems = prescriptions.map(p =>

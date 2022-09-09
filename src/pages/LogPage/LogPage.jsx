@@ -7,6 +7,7 @@ import './LogPage.css';
 
 export default function LogHistoryPage({ prescriptions }) {
   const [logs, setLogs] = useState();
+
   useEffect(function() {
     async function getLogs() {
       const logs = await logsAPI.getAllForUser();
@@ -16,8 +17,13 @@ export default function LogHistoryPage({ prescriptions }) {
   }, []);
 
   async function handleAddLog(logData) {
-    const log = await logsAPI.postLog(logData);
-    setLogs([...logs, log]);
+    const logs = await logsAPI.postLog(logData);
+    setLogs(logs);
+  }
+
+  async function updateLogItem(logItemData, id) {
+    const updatedLogs = await logsAPI.updateLog(logItemData, id);
+    setLogs(updatedLogs);
   }
 
   async function handleDelete(logEntry) {
@@ -33,6 +39,7 @@ export default function LogHistoryPage({ prescriptions }) {
       <LogList
         logs={logs}
         handleDelete={handleDelete}
+        updateLogItem={updateLogItem}
       />
     </main>
     

@@ -3,7 +3,8 @@ const Prescription = require('../../models/prescription');
 module.exports = {
     create,
     getAll,
-    deletePrescription
+    deletePrescription,
+    updatePrescription
 };
 
 async function getAll(req, res) {
@@ -14,7 +15,18 @@ async function getAll(req, res) {
 async function create(req, res) {
     req.body.user = req.user._id;
     const prescription = await Prescription.create(req.body);
-    res.json(prescription);
+    const prescriptions = await Prescription.find({ user: req.user._id, }).sort('-updatedAt');
+    res.json(prescriptions);
+}
+
+async function updatePrescription(req, res) {
+    await Prescription.findOneAndUpdate(
+        {"prescription._id": req.params._id},
+        req.body,
+        {new: true},
+    )
+    const prescriptions = await Prescription.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
+    res.json(prescriptions)
 }
 
 async function deletePrescription(req, res, next) {
