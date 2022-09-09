@@ -15,7 +15,8 @@ export default function LogListItem({ log, handleDelete, updateLogItem, prescrip
                 <div>Notes: {log.notes}</div>
                 <div>Prescription: {log.prescriptions.map(p => p.rxName).join(", ")} </div>
                 <button onClick={() => handleDelete(log._id)}>X</button>
-                <button onClick={() => console.log(new Date (log.date).toLocaleDateString())}>Log</button>
+                <button onClick={() => console.log(new Date (log.date).toLocaleDateString())}>Local Date</button>
+                <button onClick={() => console.log(new Date (log.date).toISOString())}>Iso Date</button>
             </div>
             }
         </div>

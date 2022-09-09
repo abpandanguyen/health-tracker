@@ -19,15 +19,17 @@ async function create(req, res) {
     res.json(logs);
 }
 
-async function updateLog(req, res) {
-    await Log.findOneAndUpdate(
+async function updateLog(req, res, next) {
+    try {
+        await Log.findOneAndUpdate(
         {_id: req.params.id},
-        {"log.vitals": req.body.vitals},
+        req.body,
         )
-    const test = Log.find({_id: req.params.id});    
-    console.log(test);
-    const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
-    res.json(logs)
+        const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
+        res.json(logs)
+    } catch (err) {
+        return next(err);
+    }
 }
 
 async function deleteLog(req, res, next) {

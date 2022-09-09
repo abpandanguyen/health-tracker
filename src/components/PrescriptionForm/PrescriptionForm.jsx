@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import './PrescriptionForm.css';
 
-export default function PrescriptionForm({ user, setUser, handleAddPrescription }) {
-  const [data, setData] = useState({
+export default function PrescriptionForm({ prescription, handleAddPrescription, updatePrescriptionItem, updatePrescriptionStatus, setUpdatePrescriptionStatus }) {
+  const [data, setData] = useState(
+    prescription ? {
+      rxName: prescription.rxName,
+      class: prescription.class,
+      dose: prescription.dose,
+    } : {
     rxName: '',
     class: '',
     dose: '',
@@ -13,13 +18,19 @@ export default function PrescriptionForm({ user, setUser, handleAddPrescription 
   }
   function handleSubmit(evt) {
     evt.preventDefault();
+    if (prescription) {
+      updatePrescriptionItem(data, prescription._id)
+      setUpdatePrescriptionStatus(!updatePrescriptionStatus);
+    } else {
     handleAddPrescription(data);
     setData({
       rxName: '',
       class: '',
       dose: '',
     });
+    }
   }
+  
   return (
     <div>
     <h1 className="form-title">New Prescription</h1>

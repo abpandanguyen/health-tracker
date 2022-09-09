@@ -11,6 +11,11 @@ export default function PrescriptionHistoryPage({ prescriptions, setPrescription
     setPrescriptions(prescriptions);
   }
 
+  async function updatePrescriptionItem(prescriptionItemData, id) {
+    const updatedPrescriptions = await prescriptionsAPI.updatePrescription(prescriptionItemData, id);
+    setPrescriptions(updatedPrescriptions);
+  }
+
   async function handleDelete(prescriptionEntry) {
     const prescription = await prescriptionsAPI.deletePrescription(prescriptionEntry);
     const updatedPrescriptions = prescriptions.filter((p) => p._id !== prescription._id)
@@ -24,6 +29,7 @@ export default function PrescriptionHistoryPage({ prescriptions, setPrescription
         <PrescriptionList
           prescriptions={prescriptions}
           handleDelete={handleDelete}
+          updatePrescriptionItem={updatePrescriptionItem}
         />
     </main>
     );

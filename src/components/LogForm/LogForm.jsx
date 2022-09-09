@@ -60,7 +60,6 @@ export default function LogForm({ handleAddLog, prescriptions, updateLogItem, up
             name="date"
             required
             value={data.date}
-            // value = {log ? new Date (log.date).toISOString().split("T")[0] : data.date }
             />
           <label>AM/PM</label>
           <select name="meridiem" required onChange={handleChange}>
@@ -83,7 +82,7 @@ export default function LogForm({ handleAddLog, prescriptions, updateLogItem, up
             onChange={setSelectedPrescriptions} 
             options={options} 
             />
-          <button type="submit">ADD LOG</button>
+          <button type="submit">{log ? "UPDATE LOG" : "ADD LOG"}</button>
         </form>
       </div>
     </div>

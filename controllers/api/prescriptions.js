@@ -4,7 +4,7 @@ module.exports = {
     create,
     getAll,
     deletePrescription,
-    updatePrescription
+    updatePrescription,
 };
 
 async function getAll(req, res) {
@@ -19,14 +19,17 @@ async function create(req, res) {
     res.json(prescriptions);
 }
 
-async function updatePrescription(req, res) {
-    await Prescription.findOneAndUpdate(
-        {"prescription._id": req.params._id},
+async function updatePrescription(req, res, next) {
+    try {
+        await Prescription.findOneAndUpdate(
+        {_id: req.params.id},
         req.body,
-        {new: true},
-    )
-    const prescriptions = await Prescription.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
-    res.json(prescriptions)
+        )
+        const prescriptions = await Prescription.find({ user: req.user._id, }).sort('-updatedAt');
+        res.json(prescriptions)
+    } catch (err) {
+        return next(err);
+    }
 }
 
 async function deletePrescription(req, res, next) {
