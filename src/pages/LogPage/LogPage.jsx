@@ -40,6 +40,7 @@ export default function LogHistoryPage({ prescriptions }) {
         logs={logs}
         handleDelete={handleDelete}
         updateLogItem={updateLogItem}
+        prescriptions={prescriptions}
       />
     </main>
     

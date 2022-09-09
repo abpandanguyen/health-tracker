@@ -24,7 +24,7 @@ async function updateLog(req, res) {
         {"log._id": req.params._id},
         req.body,
         {new: true},
-    )
+        )
     const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
     res.json(logs)
 }

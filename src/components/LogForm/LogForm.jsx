@@ -2,14 +2,22 @@ import { useState } from 'react';
 import Select from 'react-select';
 import './LogForm.css';
 
-export default function LogForm({ handleAddLog, prescriptions }) {
+export default function LogForm({ handleAddLog, prescriptions, updateLogItem, updateLogStatus, setUpdateLogStatus, log }) {
   const [selectedPrescriptions, setSelectedPrescriptions] = useState([]);
-  const [data, setData] = useState({
+
+  const [data, setData] = useState(
+    log ? {
+      vitals: log.vitals,
+      date: new Date (log.date).toISOString().split("T")[0],
+      meridiem: log.meridiem,
+      notes: log.notes,
+    } : {
     vitals: '',
     date: '',
     meridiem: '',
     notes: '',
-  });
+    }
+  );
 
   const options = prescriptions.map(p =>   
     ({ value: p._id , label: p.rxName })
@@ -17,11 +25,14 @@ export default function LogForm({ handleAddLog, prescriptions }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    if (log) {
+      updateLogItem(logItemData, id)
+      setUpdateLogStatus(!updateLogStatus);
+    } else {
     const pre = selectedPrescriptions.map(p => p.value)
-    console.log(pre);
-    console.log(data);
     data.prescriptions = pre
     handleAddLog(data);
+    }
   }
 
   function handleChange(evt) {
@@ -49,6 +60,7 @@ export default function LogForm({ handleAddLog, prescriptions }) {
             name="date"
             required
             value={data.date}
+            // value = {log ? new Date (log.date).toISOString().split("T")[0] : data.date }
             />
           <label>AM/PM</label>
           <select name="meridiem" required onChange={handleChange}>
