@@ -30,7 +30,7 @@ export default function PrescriptionForm({ prescription, handleAddPrescription, 
     });
     }
   }
-  
+
   return (
     <div>
     <h1 className="form-title">New Prescription</h1>
@@ -60,7 +60,7 @@ export default function PrescriptionForm({ prescription, handleAddPrescription, 
             value={data.dose}
             placeholder="mg, mL, tablets, etc."
           />
-          <button type="submit">ADD PRESCRIPTION</button>
+          <button type="submit">{prescription ? "UPDATE PRESCRIPTION" : "ADD PRESCRIPTION"}</button>
         </form>
       </div>
     </div>
