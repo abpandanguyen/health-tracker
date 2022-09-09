@@ -21,10 +21,11 @@ async function create(req, res) {
 
 async function updateLog(req, res) {
     await Log.findOneAndUpdate(
-        {"log._id": req.params._id},
-        req.body,
-        {new: true},
+        {_id: req.params.id},
+        {"log.vitals": req.body.vitals},
         )
+    const test = Log.find({_id: req.params.id});    
+    console.log(test);
     const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
     res.json(logs)
 }

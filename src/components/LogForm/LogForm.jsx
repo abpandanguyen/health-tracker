@@ -26,7 +26,7 @@ export default function LogForm({ handleAddLog, prescriptions, updateLogItem, up
   function handleSubmit(evt) {
     evt.preventDefault();
     if (log) {
-      updateLogItem(logItemData, id)
+      updateLogItem(data, log._id)
       setUpdateLogStatus(!updateLogStatus);
     } else {
     const pre = selectedPrescriptions.map(p => p.value)
