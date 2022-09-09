@@ -8,7 +8,6 @@ module.exports = {
 };
 
 async function getAll(req, res) {
-    console.log(req.user);
     const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
     res.json(logs);
 }

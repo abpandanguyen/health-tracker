@@ -19,7 +19,7 @@ export default function App() {
       setPrescriptions(prescriptions);
     }
     getPrescriptions();
-  }, []);
+  }, [user]);
 
 
   return (
