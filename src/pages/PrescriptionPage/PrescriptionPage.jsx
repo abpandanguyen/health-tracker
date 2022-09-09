@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PrescriptionForm from '../../components/PrescriptionForm/PrescriptionForm';
 import PrescriptionList from '../../components/PrescriptionList/PrescriptionList';
 import * as prescriptionsAPI from '../../utilities/prescriptions-api';
@@ -26,6 +27,7 @@ export default function PrescriptionHistoryPage({ prescriptions, setPrescription
       <main>
         <h1 className="title">Prescription Page</h1>
         <PrescriptionForm handleAddPrescription={handleAddPrescription} />
+        <Link to='/logs'><h2>Logs</h2></Link>
         <PrescriptionList
           prescriptions={prescriptions}
           handleDelete={handleDelete}

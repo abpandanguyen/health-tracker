@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import LogForm from '../../components/LogForm/LogForm';
 import LogList from '../../components/LogList/LogList';
 import * as logsAPI from '../../utilities/logs-api';
@@ -36,6 +37,7 @@ export default function LogHistoryPage({ prescriptions }) {
     <main>
       <h1 className="title">Log Page</h1>
       <LogForm handleAddLog={handleAddLog} prescriptions={prescriptions} />
+      <Link to='/prescriptions'><h2>Prescriptions</h2></Link>
       <LogList
         logs={logs}
         handleDelete={handleDelete}
