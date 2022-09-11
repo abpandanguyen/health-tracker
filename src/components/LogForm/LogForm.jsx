@@ -63,8 +63,7 @@ export default function LogForm({ handleAddLog, prescriptions, updateLogItem, up
             />
           <label>AM/PM</label>
           <select name="meridiem" required onChange={handleChange}>
-            <option value="N/A">N/A</option>
-            <option value="AM">AM</option>
+            <option selected value="AM">AM</option>
             <option value="PM">PM</option>
           </select>
           <label>Notes</label>

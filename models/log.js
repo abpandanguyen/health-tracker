@@ -9,7 +9,7 @@ const logSchema = new Schema({
     date: { type: Date, default: 'N/A'},
     meridiem: { 
         type: String,
-        enum: ['N/A', 'AM', 'PM']
+        enum: ['AM', 'PM']
     },
     prescriptions: [{ type: Schema.Types.ObjectId, ref: 'Prescription'}]
 }, {
