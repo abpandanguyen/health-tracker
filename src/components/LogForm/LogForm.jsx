@@ -14,7 +14,7 @@ export default function LogForm({ handleAddLog, prescriptions, updateLogItem, up
     } : {
     vitals: '',
     date: '',
-    meridiem: '',
+    meridiem: 'AM',
     notes: '',
     }
   );
