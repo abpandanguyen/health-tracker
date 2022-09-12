@@ -4,3 +4,8 @@
     margin: 25%;
     gap: 3vmin;
 }
+
+h3 {
+    text-align: center;
+    align-items: center;
+}
