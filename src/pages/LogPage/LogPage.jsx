@@ -6,7 +6,7 @@ import * as logsAPI from '../../utilities/logs-api';
 import './LogPage.css';
 
 
-export default function LogHistoryPage({ prescriptions }) {
+export default function LogPage({ prescriptions }) {
   const [logs, setLogs] = useState();
 
   useEffect(function() {
@@ -14,7 +14,7 @@ export default function LogHistoryPage({ prescriptions }) {
       const logs = await logsAPI.getAllForUser();
       setLogs(logs);
     }
-    getLogs();
+      getLogs();
   }, []);
 
   async function handleAddLog(logData) {

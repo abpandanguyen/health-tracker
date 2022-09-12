@@ -13,6 +13,7 @@ async function getAll(req, res) {
 }
 
 async function create(req, res) {
+    console.log(req.body);
     req.body.user = req.user._id;
     const log = await Log.create(req.body);
     const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
@@ -23,9 +24,17 @@ async function updateLog(req, res, next) {
     try {
         await Log.findOneAndUpdate(
         {_id: req.params.id},
-        req.body,
+        {
+        vitals: req.body.vitals,
+        date: req.body.date,
+        meridiem: req.body.meridiem,
+        notes: req.body.notes,
+        prescriptions: req.body.prescriptions,
+        },
         )
         const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
+        console.log(req.body);
+        console.log(req.params);
         res.json(logs)
     } catch (err) {
         return next(err);

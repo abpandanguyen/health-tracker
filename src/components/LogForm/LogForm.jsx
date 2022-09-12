@@ -11,6 +11,7 @@ export default function LogForm({ handleAddLog, prescriptions, updateLogItem, up
       date: new Date (log.date).toISOString().split("T")[0],
       meridiem: log.meridiem,
       notes: log.notes,
+      prescriptions: [''],
     } : {
     vitals: '',
     date: '',
@@ -25,13 +26,13 @@ export default function LogForm({ handleAddLog, prescriptions, updateLogItem, up
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    const pre = selectedPrescriptions.map(p => p.value)
+    data.prescriptions = pre
     if (log) {
       updateLogItem(data, log._id)
       setUpdateLogStatus(!updateLogStatus);
     } else {
-    const pre = selectedPrescriptions.map(p => p.value)
-    data.prescriptions = pre
-    handleAddLog(data);
+      handleAddLog(data);
     }
   }
 
@@ -43,7 +44,7 @@ export default function LogForm({ handleAddLog, prescriptions, updateLogItem, up
 
   return (
     <div>
-    <h1 className="form-title">New Log</h1>
+    <h1 className="form-title">{log ? "Edit Log" : "New Log"}</h1>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <label>Vitals</label>
@@ -63,7 +64,7 @@ export default function LogForm({ handleAddLog, prescriptions, updateLogItem, up
             />
           <label>AM/PM</label>
           <select name="meridiem" required onChange={handleChange}>
-            <option selected value="AM">AM</option>
+            <option defaultValue value="AM">AM</option>
             <option value="PM">PM</option>
           </select>
           <label>Notes</label>
