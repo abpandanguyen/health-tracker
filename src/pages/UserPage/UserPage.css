@@ -1,8 +1,31 @@
-.cardContainer {
-    display: grid;
+.card-container {
+    display: inline-grid;
+    align-content: center;
     grid-template-columns: repeat(2, 2fr);
-    margin: 25%;
+    margin: 5%;
     gap: 3vmin;
+}
+
+.log-card {
+    background-image: url('https://i.imgur.com/xwoEF5A.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    width: 25vmin;
+    height: 25vmin;
+    align-items: center;
+    padding-top: 3vmin;
+}
+
+.prescription-card {
+    background-image: url('https://i.imgur.com/Onn87T4.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 25px; 
+    width: 25vmin;
+    height: 25vmin;
+    align-items: center;
+    padding-top: 3vmin;
 }
 
 h3 {

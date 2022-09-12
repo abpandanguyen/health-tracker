@@ -13,8 +13,12 @@ export default function PrescriptionList({ prescriptions, handleDelete, updatePr
     )
     return (
         <main>
-            <h1 className="list-title">Prescription History</h1>
-            {prescriptionListItems}
+            <>
+                <h1 className="list-title">Prescription History</h1>
+            </>
+            <div className="prescription-container">
+                {prescriptionListItems}
+            </div>
         </main>
     );
 }

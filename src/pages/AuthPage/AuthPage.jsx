@@ -12,11 +12,11 @@ export default function AuthPage({ setUser }) {
     <div className="AuthPage">
       <h1>HealthTracker</h1>
       <button onClick={() => setShowLogin(currentShowLogin => !currentShowLogin)}>
-      Log In
+        {showLogin ? "Hide Log In" : "Log In"}
       </button>
         { showLogin ? <LoginForm setUser={setUser} /> : '' }
       <button onClick={() => setShowSignUp(currentShowSignUp => !currentShowSignUp)}>
-      Sign Up
+        { showSignUp ? "Hide Sign Up" : "Sign Up"}
       </button>
         { showSignUp ? <SignUpForm setUser={setUser} /> : '' }
       <>

@@ -5,3 +5,11 @@
 h2 {
     font-size: 3.0vmin;
 }
+
+a {
+    color: blue;
+}
+
+a:hover {
+    color: purple;
+}

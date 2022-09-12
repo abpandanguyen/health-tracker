@@ -1,10 +1,13 @@
 .LogListItem {
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 25%;
     margin-bottom: 3vmin;
+    margin-left: 37.5%;
+    margin-right: 37.5%;
     padding: 2vmin;
     border: 0.2vmin solid rgba(0, 0, 0, 0.498);
     border-radius: 1vmin;
     font-size: 2.5vmin;
+    background: lightgoldenrodyellow;
 }

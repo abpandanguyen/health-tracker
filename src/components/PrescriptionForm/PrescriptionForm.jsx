@@ -33,7 +33,7 @@ export default function PrescriptionForm({ prescription, handleAddPrescription, 
 
   return (
     <div>
-    <h1 className="form-title">New Prescription</h1>
+    <h1 className="form-title">{prescription ? "Edit Prescription" : "Add Prescription"}</h1>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <label>Name</label>

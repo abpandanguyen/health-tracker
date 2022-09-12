@@ -1,11 +1,9 @@
 .PrescriptionListItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 3vmin;
     padding: 2vmin;
     border: 0.2vmin solid rgba(0, 0, 0, 0.498);
     border-radius: 1vmin;
-    font-size: 1.5vmin;
+    font-size: 2.0vmin;
+    width: 25%;
+    height: 25%;
+    background-color: whitesmoke;
 }

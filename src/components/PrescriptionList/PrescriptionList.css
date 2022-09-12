@@ -1,3 +1,8 @@
 .list-title {
     font-size: 5vmin;
 }
+
+.prescription-container {
+    display: flex;
+    flex-wrap: wrap;
+}

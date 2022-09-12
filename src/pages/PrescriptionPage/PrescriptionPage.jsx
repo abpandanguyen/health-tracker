@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PrescriptionForm from '../../components/PrescriptionForm/PrescriptionForm';
 import PrescriptionList from '../../components/PrescriptionList/PrescriptionList';
@@ -24,7 +23,7 @@ export default function PrescriptionHistoryPage({ prescriptions, setPrescription
   }
 
     return (
-      <main>
+      <main className="prescription-page">
         <h1 className="title">Prescription Page</h1>
         <PrescriptionForm handleAddPrescription={handleAddPrescription} />
         <Link to='/logs'><h2>Logs</h2></Link>

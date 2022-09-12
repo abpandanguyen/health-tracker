@@ -1,4 +1,17 @@
 .NavBar {
     text-align: left;
     font-size: small;
+    width: fit-content;
+    border: outset 3px;
+    border-radius: 25px;
+    padding: 4px;
+    background: lightgoldenrodyellow;
+}
+
+a {
+    color: blue;
+}
+
+a:hover { 
+    color: purple;
 }

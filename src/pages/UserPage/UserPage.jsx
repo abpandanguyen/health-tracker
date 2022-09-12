@@ -5,13 +5,17 @@ import { Link } from "react-router-dom";
 export default function UserPage(){
     return (
         <div>
-            <div className="cardContainer">
-                <Link to='/logs'>
-                    <div>Logs</div>
-                </Link>
-                <Link to='/prescriptions'>
-                    <div>Prescriptions</div>
-                </Link>
+            <div className="card-container">
+                <div className="log-card">
+                    <Link to='/logs'>
+                        <div>Logs</div>
+                    </Link>
+                </div>
+                <div className="prescription-card">
+                    <Link to='/prescriptions'>
+                        <div>Prescriptions</div>
+                    </Link>
+                </div>
             </div>
             <>
                 <AboutApp />

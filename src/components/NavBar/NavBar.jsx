@@ -4,6 +4,7 @@ import './NavBar.css';
 
 export default function NavBar({ user, setUser }) {
 
+
   function handleLogOut() {
     userService.logOut();
     setUser(null);
@@ -13,7 +14,7 @@ export default function NavBar({ user, setUser }) {
     <nav className="NavBar">
       Welcome, {user.name}
       &nbsp; | &nbsp;
-      <Link to='/user'>Home</Link> 
+      <Link to='/user'>Home</Link>  
       &nbsp; | &nbsp;
       <Link to='' onClick={handleLogOut}>Log Out</Link>
     </nav>

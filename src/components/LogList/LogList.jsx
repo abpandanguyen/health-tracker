@@ -13,7 +13,7 @@ export default function LogList({ logs, handleDelete, updateLogItem, prescriptio
         />
     )
     return (
-        <main>
+        <main className="log-list">
             <h1 className='list-title'>Log History</h1>
             {logListItems}
         </main>

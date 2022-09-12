@@ -5,7 +5,7 @@ export default function AboutApp() {
         <div className="AboutApp">
             <h3>About HealthTracker</h3>
             <>
-                <p>HealthTracker is a great app!</p>
+                <p>HealthTracker exists to track your daily health needs. Keep track of your various vitals and prescriptions however you want!</p>
             </>
         </div>
     )
