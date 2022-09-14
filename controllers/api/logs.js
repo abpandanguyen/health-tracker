@@ -13,7 +13,6 @@ async function getAll(req, res) {
 }
 
 async function create(req, res) {
-    console.log(req.body);
     req.body.user = req.user._id;
     const log = await Log.create(req.body);
     const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
@@ -33,8 +32,6 @@ async function updateLog(req, res, next) {
         },
         )
         const logs = await Log.find({ user: req.user._id, }).sort('-updatedAt').populate('prescriptions').exec();
-        console.log(req.body);
-        console.log(req.params);
         res.json(logs)
     } catch (err) {
         return next(err);
